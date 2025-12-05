@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Get all hospitals (placeholder)
+// Placeholder GET route for all hospitals
 router.get('/', (req, res) => {
   res.json({ hospitals: [] });
 });
