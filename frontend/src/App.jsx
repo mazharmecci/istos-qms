@@ -17,3 +17,28 @@ export async function apiRequest(path, method = "GET", body = null, auth = true)
   if (!res.ok) throw new Error(data.message || "Request failed");
   return data;
 }
+
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Quotations from "./pages/Quotations";
+import CreateQuote from "./pages/CreateQuote";
+
+function PrivateRoute({ children }) {
+  const token = localStorage.getItem("token");
+  return token ? children : <Navigate to="/" />;
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/quotes" element={<PrivateRoute><Quotations /></PrivateRoute>} />
+        <Route path="/create-quote" element={<PrivateRoute><CreateQuote /></PrivateRoute>} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
