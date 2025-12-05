@@ -5,7 +5,7 @@ require('dotenv').config();
 const { sequelize } = require('./models');
 
 const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/users');
+//const userRoutes = require('./routes/users');
 
 // Optional routes
 let hospitalRoutes, equipmentRoutes, quotationRoutes;
@@ -19,7 +19,7 @@ app.use(express.json());
 
 // Always safe routes
 app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
+//app.use('/api/users', userRoutes);
 
 // Only use optional routes if they exist
 if (hospitalRoutes) app.use('/api/hospitals', hospitalRoutes);
@@ -30,3 +30,4 @@ if (quotationRoutes) app.use('/api/quotations', quotationRoutes);
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 module.exports = app;
+
