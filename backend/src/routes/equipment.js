@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-// Example GET route
+// Get all equipment (placeholder)
 router.get('/', (req, res) => {
-  res.json({ equipment: [] }); // placeholder response
+  res.json({ equipment: [] });
 });
 
 module.exports = router;
