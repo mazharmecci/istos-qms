@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Example route
+// Get all users (placeholder)
 router.get('/', (req, res) => {
   res.json({ users: [] });
 });
