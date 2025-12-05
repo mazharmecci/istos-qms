@@ -1,23 +1,23 @@
 const express = require('express');
 const cors = require('cors');
-const { sequelize } = require('./models');
 require('dotenv').config();
+
+const { sequelize } = require('./models');
+
+const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
+
+// Optional routes
+let hospitalRoutes, equipmentRoutes, quotationRoutes;
+try { hospitalRoutes = require('./routes/hospitals'); } catch { hospitalRoutes = null; }
+try { equipmentRoutes = require('./routes/equipment'); } catch { equipmentRoutes = null; }
+try { quotationRoutes = require('./routes/quotations'); } catch { quotationRoutes = null; }
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Route imports
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/users');
-
-// Optional routes (may be empty)
-let hospitalRoutes, equipmentRoutes, quotationRoutes;
-try { hospitalRoutes = require('./routes/hospitals'); } catch {}
-try { equipmentRoutes = require('./routes/equipment'); } catch {}
-try { quotationRoutes = require('./routes/quotations'); } catch {}
-
-// Use routes
+// Always safe routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 
