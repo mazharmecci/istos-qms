@@ -3,9 +3,9 @@ const cors = require('cors');
 const { sequelize } = require('./models');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
-const hospitalRoutes = require('./routes/hospitals');
-const equipmentRoutes = require('./routes/equipment');
-const quotationRoutes = require('./routes/quotations');
+//const hospitalRoutes = require('./routes/hospitals');
+//const equipmentRoutes = require('./routes/equipment');
+//const quotationRoutes = require('./routes/quotations');
 
 
 require('dotenv').config();
@@ -28,3 +28,4 @@ app.get('/api/health', (req,res)=>res.json({ok:true}));
 
 
 module.exports = app;
+
