@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-// Placeholder GET route for all hospitals
 router.get('/', (req, res) => {
-  res.json({ hospitals: [] });
+  res.json({ success: true, data: [] });
 });
 
 module.exports = router;
