@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// Get all equipment (placeholder)
+// Placeholder GET route for all equipment
 router.get('/', (req, res) => {
   res.json({ equipment: [] });
 });
