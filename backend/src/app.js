@@ -6,14 +6,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Route imports
+// Import routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const hospitalRoutes = require('./routes/hospitals');
 const equipmentRoutes = require('./routes/equipment');
 const quotationRoutes = require('./routes/quotations');
 
-// Route bindings
+// Bind routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/hospitals', hospitalRoutes);
