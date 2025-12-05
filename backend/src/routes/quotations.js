@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-// Placeholder GET route for all quotations
 router.get('/', (req, res) => {
-  res.json({ quotations: [] });
+  res.json({ success: true, data: [] });
 });
 
 module.exports = router;
