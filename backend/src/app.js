@@ -3,40 +3,22 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
+// Route imports
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/users');
+const hospitalRoutes = require('./routes/hospitals');
+const equipmentRoutes = require('./routes/equipment');
+const quotationRoutes = require('./routes/quotations');
+
+// Route bindings
 app.use('/api/auth', authRoutes);
-
-// Optional routes – load only if they exist and are valid routers
-const safeRequire = (path) => {
-  try {
-    const route = require(path);
-    // Ensure the module exports a function (router) before using
-    if (typeof route === 'function') {
-      return route;
-    }
-    console.warn(`⚠️ Skipping ${path}: not a valid router export`);
-    return null;
-  } catch (err) {
-    console.warn(`⚠️ Skipping ${path}: ${err.message}`);
-    return null;
-  }
-};
-
-const userRoutes = safeRequire('./routes/users');
-const hospitalRoutes = safeRequire('./routes/hospitals');
-const equipmentRoutes = safeRequire('./routes/equipment');
-const quotationRoutes = safeRequire('./routes/quotations');
-
-if (userRoutes) app.use('/api/users', userRoutes);
-if (hospitalRoutes) app.use('/api/hospitals', hospitalRoutes);
-if (equipmentRoutes) app.use('/api/equipment', equipmentRoutes);
-if (quotationRoutes) app.use('/api/quotations', quotationRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/hospitals', hospitalRoutes);
+app.use('/api/equipment', equipmentRoutes);
+app.use('/api/quotations', quotationRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => res.json({ ok: true }));
