@@ -23,7 +23,7 @@ DB_USER: istos
 DB_PASS: istospass
 DB_HOST: db
 DB_PORT: 5432
-JWT_SECRET: "change_this_to_a_strong_secret"
+JWT_SECRET: "wt4tphhhtxcyqpp"
 volumes:
 - ./backend:/usr/src/app
 ports:
@@ -32,3 +32,4 @@ ports:
 
 volumes:
 db_data:
+
